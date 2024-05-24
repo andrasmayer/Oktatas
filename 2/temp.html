@@ -1,0 +1,72 @@
+﻿<section id="sec1">
+    <div class="card">
+        <div class="card-header">
+            <label>Ez a kártya fejléce</label>
+            <button class="close">X</button>
+        </div>
+        <div class="card-body open">Ez a kártya tartalma</div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <label>Ez a kártya fejléce</label>
+            <button class="close">X</button>
+        </div>
+        <div class="card-body open">Ez a kártya tartalma</div>
+    </div>
+
+</section>
+
+
+<section id="sec2">
+    <div class="card">
+        <div class="card-header">
+            <label>Ez a kártya fejléce</label>
+            <button class="close">X</button>
+        </div>
+        <div class="card-body open">Ez a kártya tartalma</div>
+    </div>
+</section>
+
+
+<style>
+#sec_1 .card .card-header{
+background-color: blue;
+color:white;
+} 
+
+.card{
+    border:1px solid black;
+    margin: 1rem;
+    display: inline-block;
+}
+.card-body{
+    display:none;
+}
+.open{
+    display:block;
+}
+
+</style>
+
+<script>
+
+
+
+
+
+
+
+
+const closeBtn = document.querySelectorAll(".close")
+
+closeBtn.forEach(itm=>{
+    itm.addEventListener("click",(event)=>{
+        console.log("hy")
+        console.log( event.target.parentNode.parentNode.querySelector(".card-body").classList.toggle("open") )
+
+    })
+
+})
+
+</script>

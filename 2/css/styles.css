@@ -1,0 +1,16 @@
+#sec_1 .card .card-header{
+    background-color: blue;
+    color:white;
+    } 
+    
+    .card{
+        border:1px solid black;
+        margin: 1rem;
+        display: inline-block;
+    }
+    .card-body{
+        display:none;
+    }
+    .open{
+        display:block;
+    }

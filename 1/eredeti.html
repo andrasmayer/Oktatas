@@ -1,0 +1,64 @@
+﻿<div id="root"></div>
+
+<script>
+
+const list = [
+    {id:1, name:"Anna", age:20, details: "Rejtett elem #1"},
+    {id:2, name:"Béla", age:27, details: "Rejtett elem #2"},
+    {id:3, name:"Cecil", age:17, details: "Rejtett elem #3"},
+    {id:4, name:"Dénes", age:29, details: "Rejtett elem #4"},
+]
+
+
+const tableBuilder = (data) =>{
+    let context = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>${buildTbody(data)}</tbody>
+        </table>
+    `
+    return context
+}
+
+
+const buildTbody = (data) =>{
+    let context = ``
+    data.forEach( (itm,key)=>{
+        context += `
+            <tr class="user">
+                <td>${itm.id}</td>    
+                <td>${itm.name}</td>    
+                <td>${itm.age}</td>    
+            <tr>
+        `
+    })
+    return context
+}
+
+const getDetails = (key)=>{
+    console.log( list[key].details)
+}
+
+
+
+const root = document.getElementById("root")
+root.innerHTML = tableBuilder(list)
+
+
+
+const user = document.querySelectorAll(".user")
+user.forEach((itm,key)=>{
+        itm.addEventListener("click",(event)=>{
+            getDetails( key)
+        })
+    })
+
+
+
+</script>

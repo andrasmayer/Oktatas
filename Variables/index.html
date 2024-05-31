@@ -1,0 +1,119 @@
+<meta charset="UTF-8">
+
+<button id="btn">Nyomj meg</button>
+
+<div>
+    <div>A kiválasztott elem:</div>
+    <div id="chosenUser">Semmi</div>
+</div>
+
+<table border="1">
+    <tbody  id="users" ></tbody>
+</table>
+<script>
+
+
+
+const valt_0 = 2     //integer
+var valt_1 = 1      //integer
+let valt_2 = 0.0002    //float
+valt_3 = "1"    //string
+valt_4 = "Béla" //string
+valt_5 = true   //bool logikai
+valt_6 = null   //
+//console.log(valt_7) //undefined
+//console.log(  valt_2 + valt_3)
+//console.log(  valt_2 - valt_3)
+//console.log(  valt_2 * 0.02)
+valt_7 = [1,2,3,4]     //Tömb
+valt_8 = {"a":1,'b':2,"kutyafüle":3,"Attila a hun":4}     //Objektum
+/*
+console.log(valt_7[1])
+console.log(valt_8["a"])
+console.log(valt_8.Attila a hun)
+*/
+
+const valt_9 = ()=>{  alert("valt_9") }         //arrow function
+function valt_10(){  alert("valt_10") }         //function
+
+console.log(valt_9)
+//valt_9()
+//valt_10()
+
+const nyomjMeg = ()=>{  alert("megnyomtak") }  
+
+const btn = document.getElementById("btn")
+btn.addEventListener("click",()=>{
+    nyomjMeg()
+})
+
+
+//Ciklusok
+for(i=0;i<10;i++){
+    //console.log(i)
+}
+
+counter = 0
+while(counter <10){
+    counter++
+    //console.log(counter);
+}
+
+
+//valt_0 = 0
+if(valt_0 == 10){
+    console.log("igaz")
+}
+else if(valt_0 % 2 == 0){ console.log("osztható kettővel maradékkal")}
+else{ console.log("hamis")}
+
+
+
+const myArray = []
+//myArray.push("Béla")
+delete myArray          //Nem hajtja végre, de nincs hiba
+
+
+
+const myObject = {name:"Adél",  gender:"Apacs helikopter",  age:"Egy nőtől nem kérded"}
+const myObject2 = {name:"Béla", gender:"Férfi", age:21}
+
+
+
+myArray.push(myObject)
+myArray.push(myObject2)
+
+console.log(myArray)
+
+const users = document.getElementById("users")
+myArray.forEach((elem,index)=>{
+    console.log(index)
+    console.log(elem)
+    console.log("")
+    //users.innerHTML += '<div>' + elem.name + ' ' + elem.age + ' ' + elem.gender. + '<div>'
+    users.innerHTML += `<tr class="userRow" index="${index}">
+                            <td>${elem.name}</td>
+                            <td>${elem.age}</td>
+                        </tr>`
+
+})
+
+
+const userRow = document.querySelectorAll(".userRow")
+const chosenUser = document.getElementById("chosenUser")
+
+console.log(userRow)
+
+userRow.forEach((elem,index)=>{
+    elem.addEventListener("click",(event)=>{
+       const key = event.target.parentNode.getAttribute("index")
+      //alert( myArray[key].name + " neme : " + myArray[key].gender)
+      chosenUser.innerHTML = `<b>${myArray[key].name}</b> neme : <b>${myArray[key].gender}</b>`
+    })
+})
+
+
+
+
+
+</script>

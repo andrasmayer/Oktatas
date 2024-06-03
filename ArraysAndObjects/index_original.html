@@ -1,0 +1,114 @@
+<meta charset="UTF-8">
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                <input filterBy="name" placeholder="Név">
+            </th>
+            <th>
+                <input filterBy="age"  placeholder="Kor">
+            </th>
+            <th>
+                <input filterBy="gender"  placeholder="Nem">
+            </th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+/*
+const myArray = ["a",1,2,4,6,11.2,true]
+
+myArray.forEach(itm=>{
+    if(itm % 2 == 0){
+       // console.log(itm)
+    }
+})
+
+filteredArray	=	[];
+
+condition = (data) =>{
+   return data % 2 == 0 
+}
+
+condition2 = (data) =>{
+   return data % 3 == 0 && data % 6 == 0
+}
+
+filteredArray =	 myArray.filter((itm) =>{
+    return condition2(itm)
+})
+*/
+
+
+/*
+condition3 = (data) =>{
+   return data.name.toLowerCase() == "Adél".toLowerCase()
+}
+
+condition4 = (data) =>{
+   return data.name.toLowerCase() == "Adél".toLowerCase() && data.age % 10 == 0
+}
+
+filteredArray = myObject.filter((itm) =>{
+    return condition4(itm)
+})
+*/
+
+
+
+const myObject = [
+    {"name":"Adél","age":"10","gender":"Nő"},
+    {name:"Béla",age:100,gender:"Férfi"},
+    {name:"Cecil",age:32,gender:"Nő"},
+    {name:"Dénes",age:44,gender:"Férfi"},
+    {name:"Ede",age:46,gender:"Férfi"},
+    {name:"Ferenc",age:59,gender:"Férfi"},
+    {name:"Adél",age:30,gender:"Nő"},
+]
+
+const dataTable = document.getElementById("dataTable")
+const thead = dataTable.querySelector("thead")
+const theadRow = dataTable.querySelector("tr")
+const inputs = theadRow.querySelectorAll("input")
+const tbody = dataTable.querySelector("tbody")
+
+const filterOptions = {name:"", age:"", gender:""}
+
+inputs.forEach(input=>{
+    input.addEventListener("keyup",(event)=>{
+        const target = event.target
+        const filterBy = target.getAttribute("filterBy")
+
+        filterOptions[filterBy] = target.value
+
+        filteredArray = myObject.filter((itm) =>{
+          return    itm.age.toString().includes(filterOptions.age) &&
+                    itm.name.toLowerCase().includes(filterOptions.name.toLowerCase())  &&
+                    itm.gender.toLowerCase().includes(filterOptions.gender.toLowerCase())  
+    
+        })
+        //console.log(filteredArray)
+        render(filteredArray)
+    })
+})
+
+
+const render = (source) =>{
+    tbody.innerHTML = ""
+
+    source.forEach(itm=>{
+        tbody.innerHTML += `
+            <tr>
+                <td>${itm.name}</td>
+                <td>${itm.age}</td>
+                <td>${itm.gender}</td>
+            </tr>
+            `
+    })
+}
+render(myObject)
+
+</script>

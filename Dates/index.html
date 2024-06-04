@@ -1,0 +1,92 @@
+<meta charset="UTF-8">
+
+<style>
+.error{
+    background-color: red;
+    color:white
+}    
+</style>
+
+<input class="setDate" key="0">
+<input class="setDate" key="1">
+<input class="setDate" key="2">
+<input class="setDate" key="3">
+<input class="setDate" key="4">
+<input class="setDate" key="5">
+<input class="setDate" key="6">
+
+<button id="send">Send</button>
+
+<script>
+
+
+const createDate = (input) =>{
+
+    let output = null
+    const tempDate = input == null ? new Date() : new Date(input)
+    if( tempDate == "Invalid Date"){ output = {msg:"error"} }
+    else{
+        const monthNames = ["Január","Február","Március","Április","Május","Június","Július","Augusztus","Szeptember","Október","November","December"];
+        const dayNames = ["Vasárnap","Hétfő","Kedd","Szerda","Csütörtök","Péntek","Szombat"]
+
+        const curMonthName =  monthNames[tempDate.getMonth()]
+        const curDayName =  dayNames[tempDate.getDay()]
+
+        const yy = tempDate.getFullYear()
+        let mm = tempDate.getMonth() + 1
+        if(mm < 10){ mm = `0${mm}` }
+        let dd = tempDate.getDate() 
+        if(dd < 10){ dd = `0${dd}` }
+
+        output = {
+            date:`${yy}-${mm}-${dd}`,
+            year: tempDate.getFullYear(),
+            month: tempDate.getMonth(),
+            day : tempDate.getDate(),
+            dayNo : tempDate.getDay(),
+            dayName : curDayName,
+            monthName : curMonthName,
+            msg : "success"
+        }
+    }
+    return output
+} 
+
+
+const dates = [ {},{},{},{},{},{},{} ]
+
+
+const setDate  = document.querySelectorAll(".setDate")
+setDate.forEach(itm=>{
+    itm.addEventListener("change",(event)=>{
+        const key = event.target.getAttribute("key")
+        const myDate = createDate(event.target.value)
+        if( myDate.msg == "error" ){    alert("Nem dátum") }
+        else{
+            dates[key] = myDate.date
+        }
+    })
+})
+
+const send  = document.getElementById("send")
+send.addEventListener("click",(event)=>{
+    let status = 0
+    dates.forEach((itm,key)=>{ 
+        setDate[key].classList.remove("error")
+
+       if( Object.keys(itm).length > 0){
+        status++
+       }
+       else{
+        setDate[key].classList.add("error")
+       }
+    })
+
+    if(status == setDate.length){
+        console.log("Adatok küldése backendnek")
+        console.log(dates)
+    }
+
+})
+
+</script>

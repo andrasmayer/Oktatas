@@ -1,0 +1,78 @@
+<meta charset="UTF-8">
+
+<div id="content"></div>
+<button class="send" data="1">Lekérés</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script>
+/*
+const selectList = {
+    s1:{0:"Kérlek válassz", 1:"Nem tudom",2:"Mégis tudom"},
+    s2:{0:"Kérlek válassz", 1:"András",2:"Béla"},
+    s3:{0:"Kérlek válassz", 1:"Szeret",2:"Nem szeret"},
+    s4:{0:"Kérlek válassz", 1:"true",2:"false"}
+}
+*/
+
+
+
+const ajax = (callType,url,dataType,dataSet) =>{
+    const type = dataType === "json" ? "responseJSON" : "responseText"
+	return $.ajax({ async: false, type: callType, url: url, data:dataSet, dataType:dataType ,
+        success: function (response) { return response }	
+	})[type]
+}
+
+
+const selectList = ajax("post","selects.php","json")
+console.log(selectList)
+
+const selectedValues = {}
+
+
+$(document).ready(()=>{
+
+    $.each(selectList,(key,itm)=>{
+        selectedValues[key] = null
+        let context = ``
+
+        $.each(itm,(key2,val2)=>{
+             context += `<option value="${key2}">${val2}</option>`
+        })
+
+        let sel = `<select class="mySelect" id="select_${key}">${context}</select>`
+        $("#content").append(sel)
+    })
+  
+    $("body").on("change",".mySelect",function(){
+        const id = $(this).attr("id").split("select_").join("")
+        const value = $(this).val()
+        selectedValues[id] = value
+    })
+
+
+    $("body").on("click",".send",function(){
+        let errors = 0
+        $.each(selectedValues,(key,val)=>{
+            if(val == null || val == 0){ errors++ }
+        })
+        if(errors > 0){
+            alert(`${errors} hiba található`)
+        }
+        else{
+            console.log("Mehet a backend-nek")
+            const be_response = ajax("post","data.php","json",selectedValues)
+            console.log(be_response)
+
+        }
+    })
+
+})
+
+
+
+
+
+
+
+</script>

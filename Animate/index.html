@@ -1,0 +1,112 @@
+<meta charset="UTF-8">
+
+<style>
+.box{
+    display:inline-block;
+    background-color: red;
+    width:100px;
+    height: 100px;
+    margin:0;
+    padding:0;
+    margin-inline: -2px;
+}    
+#container{
+    width :520px;
+}
+
+
+
+</style>
+
+<div id="container">
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+    <div class="box">&nbsp</div>
+</div>
+
+<button onclick="animateMagin()">Nyomj meg</button>
+<button onclick="animateInterval()">Végtelen</button>
+
+
+
+<script>
+
+const box = document.querySelectorAll(".box")
+
+
+const spin = {
+    forwards:{ transform: "rotate(360deg) scale(0.4)" },
+    backwards:{ transform: "rotate(0) scale(1)" }
+}
+const duration = {  duration: 500,  fill: "forwards"}
+
+
+
+const animateMagin = () =>{
+    box.forEach(itm=>{
+        itm.classList.toggle("toggled")
+        const toggled =  itm.classList.contains("toggled") ? "forwards" : "backwards"
+        itm.animate(spin[toggled],duration)
+    })
+}
+
+
+
+
+
+const animateInterval = () =>{
+
+    let counter = 0
+
+    const myInt = setInterval(()=>{
+        box.forEach(itm=>{
+            itm.classList.toggle("toggled")
+            const toggled =  itm.classList.contains("toggled") ? "forwards" : "backwards"
+            itm.animate(spin[toggled],duration)
+           
+        })
+        counter++;
+        if(counter == 1050){ clearInterval(myInt) }
+    },1500);
+
+}
+
+
+
+
+box.forEach(itm=>{
+    itm.addEventListener("click",()=>{
+        itm.classList.toggle("toggled")
+        const toggled =  itm.classList.contains("toggled") ? "forwards" : "backwards"
+        itm.animate(spin[toggled],duration)
+    })
+})
+
+
+</script>

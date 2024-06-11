@@ -1,0 +1,180 @@
+<meta charset="UTF-8">
+<style>
+
+.nav-minimalized{
+
+}
+nav{
+    background-color: #ccc;
+}
+.nav-item{
+    display:inline-block;
+    border:1px solid red;
+    margin:5px;
+    padding:5px;
+}
+
+
+.nav-minimalized .nav-item{
+    display:block;
+}
+
+
+.dropdown-menu{
+    margin-top:11px;
+    background-color: ghostwhite;
+    position:absolute;
+}
+.hide{
+   opacity: 0;
+   z-index:1000;
+   display:none;
+}
+
+.dropdown-item div{
+    padding:5px;
+}
+a{
+    text-decoration:none;
+    color:black;
+}
+.toggled{
+    background-color: black;
+    color: white;
+}
+</style>
+
+<nav  id="myNav" class="">
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+    <div class="nav-item">
+        <a href="#home">Ez egy link</a>
+    </div>
+
+    <div class="nav-item">
+        <a href="#" class="dropdown-toggle">Legördülő</a>
+        <div class="dropdown-menu hide">
+            <div class="dropdown-item">
+                <div>
+                    <a href="#home">Ez egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+            </div>
+        </div> 
+    </div> 
+
+    <div class="nav-item">
+        <a href="#" class="dropdown-toggle">Legördülő</a>
+        <div class="dropdown-menu hide">
+            <div class="dropdown-item">
+                <div>
+                    <a href="#home">Ez egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+                <div>
+                    <a href="#home">Ez is egy almenü</a>
+                </div>
+            </div>
+        </div> 
+    </div>    
+    
+
+</nav>
+
+
+<div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button>Nyomj meg</button>
+
+</div>
+<script>
+
+
+const dropDownStatus = {
+    on:{ opacity: 1,display:"block" },
+    off:{ opacity:0,display:"none" }
+}
+
+const dropdowns = document.querySelectorAll(".dropdown-toggle")
+dropdowns.forEach((itm,key)=>{
+    itm.addEventListener("click",()=>{
+    console.log("katt")
+
+        //Ez az elem saját tulajdonsága
+        const menu = itm.parentNode.querySelector(".dropdown-menu")
+        itm.classList.toggle("toggled")
+        const toggled =  itm.classList.contains("toggled") ? "on" : "off"
+        menu.animate(dropDownStatus[toggled], {  duration: 100,  fill: "forwards"})
+
+
+        //Ez az összes többi elem tulajdonsága
+        dropdowns.forEach((itm2,key2)=>{
+            const inner_toggled =  itm2.classList.contains("toggled") ? "on" : "off"
+            const inner_menu = itm2.parentNode.querySelector(".dropdown-menu")
+            if(key != key2  && inner_toggled == "on"){
+                itm2.classList.toggle("toggled")
+                inner_menu.animate(dropDownStatus["off"], {  duration: 100,  fill: "forwards"})
+            }
+         })
+
+
+
+   
+    })
+
+})
+
+
+
+const checkSceenWidth = () =>{
+    const navMenu = document.getElementById("myNav")
+    if(window.innerWidth > window.innerHeight){ navMenu.classList.remove("nav-minimalized") }
+    else{ navMenu.classList.add("nav-minimalized")}
+}
+checkSceenWidth()
+
+window.addEventListener("resize",()=>{
+    checkSceenWidth()
+})
+</script>

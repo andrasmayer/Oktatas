@@ -1,0 +1,49 @@
+<style>
+.box{
+    display:inline-block;
+    background-color: red;
+    width:100px;
+    height: 100px;
+
+}    
+.big-box{}    
+.blue{
+    color:blue;
+}
+</style>
+
+<div class="box">1</div>
+<div class="box">2</div>
+
+
+
+<script>
+
+
+const spin = {
+  forwards:{ transform: "rotate(360deg) scale(0.4)" },
+  backwards:{ transform: "rotate(0) scale(1)" },
+}
+const enlarge = {
+    big:{ width:"300px", height:"300px"  },
+    small:{  width:"100px", height:"100px" },
+}
+
+
+
+
+    const box = document.querySelectorAll(".box")
+    box.forEach(itm=>{
+        itm.addEventListener("click",(e)=>{
+            e.target.classList.toggle("toggled")
+            const direction = e.target.classList.contains("toggled") ? "forwards" : "backwards"
+            const size = e.target.classList.contains("toggled") == false ?  "small" :"big" 
+
+            //e.target.animate(spin[direction], {  duration: 500,  iterations: 1, fill: "forwards"})
+            e.target.animate(enlarge[size], {  duration: 500,  iterations: 1, fill: "forwards"})
+
+        })
+    })
+
+
+</script>

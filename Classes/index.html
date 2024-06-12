@@ -1,0 +1,55 @@
+﻿<script>
+class Products{
+    constructor(props){
+        this.props = props
+    }
+    get(){
+        console.log( this.props )
+    }
+}
+
+
+class extendedProducts extends Products{
+    constructor(props){
+        super(props)
+    }
+    boom(){ alert("Kaboooooom!") }
+    set(input){
+        Object.keys(input).forEach(key=>{
+            this.props[key] = input[key]
+        })
+    }
+}
+
+
+class ultraExtendedProducts extends extendedProducts{
+    constructor(props){
+        super(props)
+    }
+    delete(key){
+        delete this.props[key]
+        this.get()
+    }
+}
+
+/*
+const App1 = new Products({type:"car",brand:"Volvo"})
+App1.get()
+*/
+
+/*
+const App2 = new extendedProducts({type:"car",brand:"Volvo"})
+App2.get()
+App2.set({quantity :2})
+App2.get()
+App2.set({brand :"Skoda"})
+App2.get()
+*/
+
+
+const App3 = new ultraExtendedProducts({type:"car",brand:"Volvo"})
+App3.get()
+App3.delete("type")
+//App3.get()
+//App3.boom()
+</script>

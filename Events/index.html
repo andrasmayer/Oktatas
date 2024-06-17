@@ -1,0 +1,105 @@
+﻿<button class="minta gomb" value="123" >click</button>
+
+<div>
+    <input  class="minta input">
+</div>
+
+<div>
+    <select  class="minta select">
+        <option value="-">Kérlek válassz!</option>
+        <option value="1">Első</option>
+        <option value="2">Második</option>
+        <option value="3">Harmadik</option>
+    </select>
+</div>
+
+
+
+<div>
+    <button class="feldolgoz" >Feldolgoz</button>
+</div>
+
+
+
+
+<script>
+
+
+
+const minta = document.querySelectorAll(".minta")
+
+const preparation = {}
+minta.forEach(itm=>{
+   
+
+    preparation[itm.classList[1]] = ""
+
+
+
+
+
+    itm.addEventListener("click",(event)=>{
+
+        preparation[itm.classList[1]] = event.target.value
+     //   console.log(preparation)
+    })
+
+
+    itm.addEventListener("change",(event)=>{
+      preparation[itm.classList[1]] = event.target.value
+    })
+
+    itm.addEventListener("mouseenter",(event)=>{
+        //console.log("mouse eneterd on target")
+    })
+
+    itm.addEventListener("mouseout",(event)=>{
+        //console.log("mouse out from target")
+    })
+
+    itm.addEventListener("focus",(event)=>{
+        console.log("focused on target")
+    })
+
+    itm.addEventListener("focusout",(event)=>{
+        console.log("focused off target")
+    })
+
+
+})
+
+
+
+
+const feldolgoz = document.querySelector(".feldolgoz")
+
+
+feldolgoz.addEventListener("click",(event)=>{
+    let errors = 0
+
+    Object.keys(preparation).forEach(key=>{
+
+        if( ["","-"].includes(preparation[key]) ){
+            errors++
+        }
+
+    })
+
+    if(errors == 0){
+        console.log("Validálás sikeres")
+    }
+    else{
+        console.log(`${errors} érték hiányzik`)
+    }
+
+
+        //console.log(preparation)
+
+
+})
+
+
+
+
+
+</script>

@@ -1,0 +1,71 @@
+﻿<div>
+    <span id="root"></span>
+    <span id="result"></span>
+
+</div>
+
+
+<script>
+const root = document.getElementById("root")
+const result = document.getElementById("result")
+
+
+const testFnc_1 = () =>{
+    console.log("első funkció")
+}
+const testFnc_2 = () =>{
+    console.log("Második funkció")
+}
+const testFnc_3 = () =>{
+    console.log("Harmadik funkció")
+}
+
+
+
+
+
+
+
+const lvl1 = {  titles:["Kérlek válassz","Nevek","Betük","Autók"], values:[null,0,1,2] }
+
+const lvl2 = [
+    { titles:["András","Béla","Cecil"], values:[0,1,2], fnc:[testFnc_1,testFnc_2,testFnc_3] },
+    { titles:["a","b","c"], values:[1,2,3] },
+    { titles:["Volvo","Ferrari","Trabant"], values:[1,2,3] },
+]
+
+
+let options = ""
+lvl1.titles.forEach((itm,key) => {
+    options += `<option value="${lvl1.values[key]}">${itm}</option>`
+})
+
+root.innerHTML = `<select onchange="loadLvl2(event)">${options}</select>`
+
+
+index = null
+function loadLvl2(e){
+    
+    index = e.target.value
+    let options2 = ""
+
+    lvl2[index].titles.forEach((itm,key) => {
+        options2 += `<option value="${ lvl2[index].values[key]}">${itm}</option>`
+    })
+    result.innerHTML = `
+        <select id="sl_2">${options2}</select>
+        <button onclick="lvl2Fnc()">Küldés</button>
+    `
+}
+
+
+function lvl2Fnc(){
+    const lvlVal = document.getElementById("sl_2")
+  
+    if(   lvl2[index].fnc != null){
+        lvl2[index].fnc[lvlVal.value]()
+    }
+
+    lvlVal == null ?  alert("Nem csalunk!!!!") : console.log(lvlVal.value)
+}
+</script>

@@ -1,0 +1,115 @@
+<meta charset="UTF-8">
+
+<style>
+.piros{
+    background-color: red;
+    color:white;
+}    
+</style>
+
+
+<div id="root"></div>
+<div id="content"></div>
+
+<script>
+const root = document.getElementById("root") //hivatkozás a root id-jú div elemre
+const content = document.getElementById("content")
+
+
+class Home{
+    constructor(props){
+        this.props = props
+    }
+    init(){
+        return `
+            <div>
+                <div>Ez a főoldal</div>
+                <button id="gomb">Nyomj meg</button>
+            </div>
+            `
+    }
+    events(){
+        const gomb = document.getElementById("gomb")
+        gomb.addEventListener("click",(event)=>{
+            alert("megnyomtak")
+        })
+    }
+}
+
+
+
+class About{
+    constructor(props){
+        this.props = props
+    }
+    init(){
+        return `
+            <div>
+                <div>Ez a rólunk oldal</div>
+                <button id="gomb">Nyomj meg engem is</button>
+            </div>
+            `
+    }
+    events(){
+        const gomb = document.getElementById("gomb")
+        gomb.addEventListener("click",(event)=>{
+            event.target.classList.toggle("piros")
+        })
+    }
+}
+
+class Error404{
+    constructor(props){
+        this.props = props
+    }
+    init(){
+        return `
+            <div>
+                <div>A keresett oldal nem található</div>
+            </div>
+            `
+    }
+    events(){
+
+    }
+}
+
+
+
+const path = {
+    ""      :{title:"Főoldal", page:Home},
+    "#"     :{title:"Főoldal", page:Home},
+    "#home" :{title:"Főoldal", page:Home},
+    "#about":{title:"Rólunk", page:About},
+    "#error404":{title:"404-es hiba", page:Error404},
+}
+
+
+Object.keys(path).forEach(index=>{
+    if( ["","#","#error404"].includes(index) === false){
+        root.innerHTML += `
+            <div>
+                <a href="${index}">${path[index].title}</a>
+            </div>
+        `
+   }
+})
+
+
+const router = () =>{
+    let route = location.hash
+
+    if( path[route] == null){
+        route = "#error404"
+    }
+
+    const activeRoute = new path[route].page()
+    content.innerHTML = activeRoute.init()
+    activeRoute.events()
+}
+
+router()
+onhashchange = () => { router() }
+
+
+</script>

@@ -1,0 +1,108 @@
+<style>
+canvas{
+    border:1px solid black;
+}    
+</style>
+
+<div id="root"></div>
+<div id="root2"></div>
+
+<script>
+
+class createCanvas{
+    constructor(props){
+        this.props = props
+        this.props.maxValue = Math.max(...this.props.dataSet.data)     
+        if(this.props.blockSpace == null){
+            this.props.blockSpace  = 20
+        }
+        if(this.props.width == null){
+            this.props.width  = 320
+        }
+        if(this.props.height == null){
+            this.props.height  = 200
+        }
+        if(this.props.unit == null){
+            this.props.unit  = ""
+        }
+        if(this.props.labelFont == null){
+            this.props.labelFont  =  "12px Arial bold"
+        }
+        if(this.props.legendFont == null){
+            this.props.legendFont  =  "20px Arial bold"
+        }
+        this.props.barWidth = parseInt(this.props.width - this.props.blockSpace*2 - this.props.blockSpace * (this.props.dataSet.data.length - 1) ) / this.props.dataSet.data.length
+        this.init() 
+    }
+    init(){
+        const cCounter = document.querySelectorAll(".myCanvay").length
+        document.querySelector(this.props.target).innerHTML = `<canvas class="myCanvay" id="canvas_${cCounter}" width="${this.props.width}" height="${this.props.height}"></canvas>`
+        this.ctx = document.getElementById(`canvas_${cCounter}`).getContext("2d");
+
+        this.props.dataSet.data.forEach((value,key)=>{
+            const prefix = key == 0 ? this.props.blockSpace : this.props.blockSpace * key + this.props.blockSpace
+            const ctxLeft = key   * this.props.barWidth  + prefix
+
+            this.ctx.fillStyle = this.props.dataSet.colors[key]
+
+            this.ctx.fillRect(
+                ctxLeft,
+                this.props.height -  this.props.height * this.props.dataSet.data[key] / this.props.maxValue  + this.props.blockSpace ,
+                this.props.barWidth,
+                this.props.height * this.props.dataSet.data[key] / this.props.maxValue - this.props.blockSpace*2
+            )
+
+
+            this.ctx.font =  this.props.labelFont
+            this.ctx.fillStyle = "black"
+
+            this.ctx.fillText(this.props.dataSet.labels[key], ctxLeft, this.props.height-5);
+
+
+            this.ctx.font = this.props.legendFont 
+            this.ctx.fillText(`${this.props.dataSet.data[key]} ${this.props.unit}`, ctxLeft, this.props.height*0.9);
+
+
+        })
+    }
+}
+
+
+const canvas_1 = new createCanvas(
+    {
+        target: "#root",
+        blockSpace:20,
+        width:400,
+        height:200,
+        unit : "Kg",
+        labelFont: "12px comic sans",
+        legendFont: "20px comic sans",
+
+        dataSet:{
+           data:[100,400,320],
+            labels:["Ferrai","Fiat","Volvo"],
+            colors:["red","orange","pink"]
+        }
+    }
+)
+
+
+
+/*
+
+const canvas_2 = new createCanvas(
+    {
+        target: "#root2",
+
+
+        dataSet:{
+           data:[100,400],
+            labels:["Ferrai","Fiat"],
+            colors:["red","pink"]
+        }
+    }
+)
+
+
+*/
+</script>

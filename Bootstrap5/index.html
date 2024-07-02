@@ -1,78 +1,286 @@
 <meta charset="UTF-8">
-
-<div id="content"></div>
-<button class="send" data="1">Lekérés</button>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script>
-/*
-const selectList = {
-    s1:{0:"Kérlek válassz", 1:"Nem tudom",2:"Mégis tudom"},
-    s2:{0:"Kérlek válassz", 1:"András",2:"Béla"},
-    s3:{0:"Kérlek válassz", 1:"Szeret",2:"Nem szeret"},
-    s4:{0:"Kérlek válassz", 1:"true",2:"false"}
+
+<style>
+.newsBlock{
+    min-height: 300px;
 }
-*/
-
-
-
-const ajax = (callType,url,dataType,dataSet) =>{
-    const type = dataType === "json" ? "responseJSON" : "responseText"
-	return $.ajax({ async: false, type: callType, url: url, data:dataSet, dataType:dataType ,
-        success: function (response) { return response }	
-	})[type]
+.btn-info{
+    background-color:pink;
+    border:1px solid pink;
 }
 
+</style>
 
-const selectList = ajax("post","selects.php","json")
-console.log(selectList)
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 
-const selectedValues = {}
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li class="bg-danger"><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
 
 
-$(document).ready(()=>{
 
-    $.each(selectList,(key,itm)=>{
-        selectedValues[key] = null
-        let context = ``
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-info">Left</button>
+    <button type="button" class="btn btn-primary">Middle</button>
+    <button type="button" class="btn btn-success">Right</button>
+  </div>
 
-        $.each(itm,(key2,val2)=>{
-             context += `<option value="${key2}">${val2}</option>`
-        })
 
-        let sel = `<select class="mySelect" id="select_${key}">${context}</select>`
-        $("#content").append(sel)
-    })
+
+<div>
+  <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    Offcanvas
+  </a>
+
   
-    $("body").on("change",".mySelect",function(){
-        const id = $(this).attr("id").split("select_").join("")
-        const value = $(this).val()
-        selectedValues[id] = value
-    })
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </div>
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-    $("body").on("click",".send",function(){
-        let errors = 0
-        $.each(selectedValues,(key,val)=>{
-            if(val == null || val == 0){ errors++ }
-        })
-        if(errors > 0){
-            alert(`${errors} hiba található`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button class="btn btn-danger">Ok</button>
+<button class="btn btn-warning">Ok</button>
+<button class="btn btn-success">Ok</button>
+<button class="btn btn-primary">Ok</button>
+<button class="btn btn-info">Ok</button>
+<button class="btn btn-dark">Ok</button>
+<button class="btn btn-light">Ok</button>
+<button class="btn btn-secondary">Ok</button>
+
+<div class="text-danger">Szöveg</div>
+<div class="text-warning">Szöveg</div>
+<div class="text-success">Szöveg</div>
+<div class="text-primary">Szöveg</div>
+
+
+<div class="bg-danger text-light text-end">Szöveg</div>
+<div class="bg-warning">Szöveg</div>
+<div class="bg-success">Szöveg</div>
+<div class="bg-primary">Szöveg</div>
+
+
+
+<div class="border p-1 pt-2 pb-2 ps-4">Padding</div>
+
+<h1>H1</h1>
+<div class="h1">H1 bootstrap</div>
+<div class="h2">H1 bootstrap</div>
+<div class="display-1">H1 bootstrap</div>
+<div class="display-6">H1 bootstrap</div>
+
+
+
+<div class="border m-1 mt-2 mb-2 ms-4">Margin</div>
+
+
+
+<div class="container-fluid ">
+    <div class="d-flex justify-content-center row">
+            <div class="p-2 col-12 col-lg-3">
+                <div class="card bg-danger p-2 newsBlock">
+                    <div class="card-tile h3 p-2">Fejléc</div>
+                    <div class="card-body">Tartalom</div>
+                </div>
+            </div>
+            <div class="p-2 col-12 col-lg-3 ">
+                <div class="card bg-primary p-2 newsBlock">
+                    <div class="card-tile h3 p-2">Fejléc 2</div>
+                    <div class="card-body">Tartalom 2</div>
+                </div>
+            </div>
+            <div class="p-2 col-12 col-lg-3 ">
+                <div class="card bg-info p-2 newsBlock">
+                    <div class="card-tile h3 p-2">Fejléc 3</div>
+                    <div class="card-body">Tartalom 3</div>
+                </div>
+            </div>
+    </div>
+    <div class="d-flex justify-content-center row">
+        <div class="p-2 col-12 col-lg-6">
+            <div class="card bg-danger p-2 newsBlock">
+                <div class="card-tile h3 p-2">Fejléc</div>
+                <div class="card-body">Tartalom</div>
+            </div>
+        </div>
+        <div class="p-2 col-12 col-lg-3 ">
+            <div class="card bg-primary p-2 newsBlock">
+                <div class="card-tile h3 p-2">Fejléc 2</div>
+                <div class="card-body">Tartalom 2</div>
+            </div>
+        </div>
+        <div class="p-2 col-12 col-lg-3 ">
+            <div class="card bg-info p-2 newsBlock">
+                <div class="card-tile h3 p-2">Fejléc 3</div>
+                <div class="card-body">Tartalom 3</div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center row">
+        <div class="p-2 col-12 col-lg-10">
+            <div class="card bg-danger p-2 newsBlock">
+                <div class="card-tile h3 p-2">Fejléc</div>
+                <div class="card-body">Tartalom</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+<!--
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+-->
+  <!-- Modal -->
+
+  <input class="validator" data-id="username">
+  <input class="validator" type="password" data-id="password">
+  <input class="validator" data-id="email">
+
+
+<script>
+
+
+$("body").on("keyup",".validator",function(e){
+    if(e.keyCode == 13){
+        const elvart = 5
+        const vName = $(this).attr("data-id")
+        if( $(this).val().length < elvart){
+            $("#exampleModal .modal-body").html(`A bevitt szöveg a <b>${vName}</b> mezőben ${elvart-$(this).val().length} karakterrel kevesebb, mint az elvárt`)
+            $("#exampleModal").modal("show")
         }
-        else{
-            console.log("Mehet a backend-nek")
-            const be_response = ajax("post","data.php","json",selectedValues)
-            console.log(be_response)
-
-        }
-    })
-
+    }
 })
-
-
-
-
-
+    /*
+const ellenoriz = (e) =>{
+    if(e.keyCode == 13){
+        const elvart = 5
+        if(e.target.value.length < elvart){
+            $("#exampleModal .modal-body").html(`A bevitt szöbeg ${elvart-e.target.value.length} karakterrel kevesebb, mint az elvárt`)
+            $("#exampleModal").modal("show")
+        }
+    }
+}
+*/$
 
 
 </script>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger h3" id="exampleModalLabel">Figyelmeztetés</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <input class="validator" data-id="minta1">
+  <input class="validator" type="password" data-id="repcsi">
+  <input class="validator" data-id="elefánt">

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS alapok</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body{
+                background-color:#f5f2eb;
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+                max-width:100%;
+                position: relative;
+            }
+            .box{
+                box-sizing: border-box;
+                padding:5px;
+                display:inline;
+            }
+            .box .box-content{
+                background-color:#fcf4e3;
+                padding:1em;
+                margin:0.5em;
+                border:1px solid silver;
+                border-radius:3px;
+                min-height:300px;
+            }
+            
+            .box-small{
+                background-color:red;
+                min-height:100px !important;
+            }
+            .box .box-header{
+                font-size:24px;
+            }
+
+
+            .w-100{
+                flex: 0 0 100%; 
+            }
+
+            .w-75{
+                flex: 0 0 75%;
+            }
+            .w-sm-50{
+                flex: 0 0 50%;
+            }
+            .w-25{
+                flex: 0 0 25%;
+            }
+            .w-10{
+                flex: 0 0 10%;
+            }
+
+            .w-sm-75{
+                flex: 0 0 75%;
+            }
+            .w-sm-50{
+                flex: 0 0 50%;
+            }
+            .w-sm-25{
+                flex: 0 0 25%;
+            }
+            .w-sm-10{
+                flex: 0 0 10%;
+            }
+
+            /* Nagy képernyő*/
+            @media (min-width: 768px) {
+       
+            }
+
+            /* Kis képernyő*/
+            @media (max-width: 767px) {
+                .w-sm-75, .w-sm-50, .w-sm-25, .w-sm-10{
+                    flex: 0 0 100%;
+                }
+            }
+
+
+            .p-0{
+                padding:0;
+            }
+            .p-1{
+                padding:0.25em;
+            }  
+            .p-2{
+                padding:0.5em;
+            }
+            .p-3{
+                padding:1em;
+            }
+            .p-4{
+                padding:1.25em;
+            }
+            .p-5{
+                padding:1.5em;
+            }
+            .text-center{
+                text-align:center;
+            }
+
+            .btn-link{
+                position: absolute;
+                bottom: 10px; 
+                right: 10px;
+                text-decoration:none;
+                color:#b37304;
+                font-weight:bold;
+            }
+            .btn-link:hover{
+                color:red;
+                font-size:20px;
+            }
+            .container .img{
+                transition: transform 0.6s ease;
+                width:90%;
+            }
+            .container .img:hover {
+                transform: scale(1.05); /* A kép 1.2-szeresére nagyobbodik */
+            }
+            .justify-content-center{
+                justify-content: center;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+            <div class="container">
+                <div class="box w-100">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25 text-center">
+                                <img class="img" src="https://res.cloudinary.com/teepublic/image/private/s--f7NP9teB--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_000000,e_outline:48/co_000000,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/t_watermark_lock/c_limit,f_auto,h_630,q_auto:good:420,w_630/v1567993192/production/designs/5891274_0.jpg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>A Tesla-Edison-csörte, avagy az áramrendszerek háborúja</h1>
+                                    <div>Thomas Edison és Nicola Tesla. Két lángelme egyazon korban, akik emberileg sajnos – ám a tudomány szempontjából mégis szerencsére – képtelenek voltak összefogni, vagy együttműködni egymással. Az emberiség történetének számos nagy formátumú alakját ismerjük, akik hozzásegítettek minket hétköznapjaink megkönnyítéséhez. A fenti úriemberek kétségkívül közéjük tartoznak, ugyanakkor még így is kiemelkednek, hiszen nem csupán egy, de számos létfontosságú találmány fűződik a nevükhöz. Háborújuk története legendás, érdemeiket pedig nem, hogy nem mosta el az idő, sokkal inkább csak nemesítette őket.</div>
+                                    <a class="btn-link" href="https://ectopolis.hu/tudomany/a-tesla-edison-csorte-avagy-az-aramrendszerek-haboruja/">Wiki</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box w-sm-50">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25  text-center">
+                                <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Tesla_circa_1890.jpeg/640px-Tesla_circa_1890.jpeg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>Nikola Tesla</h1>
+                                    <div>Szerb-amerikai fizikus, feltaláló, villamosmérnök, gépészmérnök, filozófus. Életében 146 szabadalmat jegyeztek be a neve alatt (ebből 112-t az USA-ban). Róla nevezték el a mágneses indukció SI-mértékegységét (lásd: Tesla).</div>
+                                    <a class="btn-link" href="https://hu.wikipedia.org/wiki/Nikola_Tesla_(feltal%C3%A1l%C3%B3)">Wiki</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box w-sm-50">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25 text-center">
+                                <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Thomas_Edison2.jpg/250px-Thomas_Edison2.jpg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>Thomas Alva Edison</h1>
+                                    <div>Amerikai feltaláló és üzletember, egyes vélemények szerint minden idők egyik legnagyobb feltalálója. Az Egyesült Államokban 1093, az egész világon 2332 szabadalmat jegyeztetett be. Találmányai – mint a fonográf, a mikrofon, a tökéletesített elektromos izzólámpa, a kinetoszkóp – nagy hatással voltak a modern ipari társadalom életmódjára. Az elsők között alkalmazta az ipari fejlesztés területén a szervezett csapatmunkát.</div>
+                                    <a class="btn-link" href="https://hu.wikipedia.org/wiki/Thomas_Alva_Edison">Wiki</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+
+                <div class="box w-sm-25">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25 text-center">
+                                <img class="img" src="https://elektrorostov.ru/assets/mifullsizeky48e4.jpg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>Aszinkron gép</h1>
+                                    <div>Más néven indukciós motor a legáltalánosabban használt, legegyszerűbb szerkezetű villamos forgógép, egy forgó és egy álló részből tevődik össze. A gyakorlatban az egyik legelterjedtebb villamos gép. Kisebb teljesítményre általában egyfázisú, míg nagyobb teljesítmény esetében kizárólag háromfázisú kivitelben készül.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box w-sm-25">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25 text-center">
+                                <img class="img" src="https://ae01.alicdn.com/kf/Hbeac02be7ba14ee0a05d08a6a6bf4801M/Music-Tesla-Coil-Finsihed-Product-High-Frequency-Model-Generator-Ignition-Diy-Set-Drive-Plate-Lightning.jpg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>Tesla tekercs</h1>
+                                    <div>Nikola Tesla 1891-ben építette meg először a róla elnevezett Tesla-tekercset. Ő volt az első, aki az elektromos rezonancia jelenségét a gyakorlatban is megvalósította és felhasználta. A Tesla-tekercs legalább két légmagos tekercsből áll, ami nagyfeszültséget állít elő magas frekvencián. </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box w-sm-25">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25 text-center">
+                                <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Edison_bulb.jpg/220px-Edison_bulb.jpg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>Elektromos izzólámpa</h1>
+                                    <div>Edison 1878-ban állt neki egy elektromos világítóeszköz kidolgozásának, ez reményei szerint felváltotta volna a gáz- és petróleumlámpákat.[38] Az izzólámpát kezdte el tökéletesíteni, melynek elve akkor már jól ismert volt, és többen próbálkoztak a gyakorlatban is használható villanykörte kifejlesztésével.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="box w-sm-25">
+                    <div class="box-content">
+                        <div class="box-body container">
+                            <div class="w-25">
+                                <img class="img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/EdisonPhonograph.jpg/230px-EdisonPhonograph.jpg"> 
+                            </div>
+                            <div class="w-75">
+                                <div class="p-2">
+                                    <h1>Fonográf</h1>
+                                    <div>Görög szó, magyar jelentése: hangíró készülék. Az első olyan hangfelvételre és lejátszásra is alkalmas készülék volt, mely a gyakorlatban is bevált. Thomas Alva Edison találmánya volt, 1877-ben készült el az első működő készülék. A különféle harangjátékok, zenélődobozok, gépzongorák már korábban is képesek voltak hangokat, vagy akár összetettebb dallamokat visszaadni.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <!-- Vegyes boxok-->
+                <div class="justify-content-center container w-100">
+                    <div class="box w-10 ">
+                        <div class="box-content box-small">
+                            <div class="box-header">10% széles</div>
+                            <div class="box-body">Ez egy szöveg</div>
+                        </div>
+                    </div>
+                    <div class="box w-10 ">
+                        <div class="box-content box-small">
+                            <div class="box-header">10% széles</div>
+                            <div class="box-body">Ez egy szöveg</div>
+                        </div>
+                    </div>
+                    <div class="box w-10">
+                        <div class="box-content box-small">
+                            <div class="box-header">10% széles</div>
+                            <div class="box-body">Ez egy szöveg</div>
+                        </div>
+                    </div>
+                    <div class="box w-10">
+                        <div class="box-content box-small">
+                            <div class="box-header">10% széles</div>
+                            <div class="box-body">Ez egy szöveg</div>
+                        </div>
+                    </div>
+                    <div class="box w-10">
+                        <div class="box-content box-small">
+                            <div class="box-header">10% széles</div>
+                            <div class="box-body">Ez egy szöveg</div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<div id="users"></div>
+
+
+<script>
+function Ajax(obj) {
+    /*
+    method      :   get/post
+    url         :    hívás címe
+    data        : beküldött adatok / JSON preferált,
+    response    :   json, vagy elhagyható
+    */
+    if(obj.data == null){   obj.data = {} }
+    let data = null
+    var httpRequest = new XMLHttpRequest() 
+    httpRequest.onreadystatechange = (e)=>{
+        if(obj.data == null){   obj.data = {} }
+        if(e.target.readyState ==4){
+            data = obj.response == "json" ? JSON.parse(e.target.response) : e.target.response
+        }
+    }
+    
+    let input = ""
+    Object.keys(obj.data).forEach((key,index)=>{
+        input += `${key}=${obj.data[key]}`
+        if(  index < Object.keys(obj.data).length-1){
+            input += "&"
+        }
+    })
+    let prefix = ""
+    if( obj.method == "get"){ prefix = `?${input}` }
+    httpRequest.open(obj.method, `${obj.url}${prefix}`, false)
+    httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+    httpRequest.send(input)
+    return data
+} 
+
+
+
+
+
+
+const userList = Ajax({
+    url:"./feed.php",
+    method:"post",
+    response:"json"
+}) 
+
+
+
+const users = document.getElementById("users")
+let userContext = ``
+Object.keys(userList).forEach(key=>{
+    userContext += `<div class="user" key="${key}">${userList[key].name}</div>`
+})
+users.innerHTML = userContext
+
+const user = document.querySelectorAll(".user")
+user.forEach(itm=>{
+    itm.addEventListener("click",(e)=>{
+      //  console.log( e.target.getAttribute("key") )
+        
+        const res = Ajax({
+            url:"./feed.php",
+            method:"post",
+            response:"json",
+            data:{key: e.target.getAttribute("key")}
+        }) 
+        console.log(res)
+
+
+
+
+    })
+})
+
+
+
+
+
+
+
+</script>

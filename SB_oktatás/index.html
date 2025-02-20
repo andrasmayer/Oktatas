@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+
+        <div id="mintaId">1. sor</div>
+        <div class="piros">2. sor</div>
+        <div>3. sor</div>
+        <div class="nagyBetu">4. sor</div>
+        <p>para .1</p>
+        <p>para .2</p>
+        <p>para .3</p>
+        <p>para .4</p>
+
+        <span class="piros">cella</span>
+        <span>cella</span>
+        <span>cella</span>
+
+        <label>Cimke 1</label>
+        <label class="zold nagyBetu">Cimke 2</label>
+        <label>Cimke 3</label>
+
+        <h1>Hello world</h1>
+
+
+        <div class="zold">
+            <div>
+                <span>1</span>
+                <span>2</span>
+            </div>
+            <div>
+                <span>1</span>
+                <span>2</span>
+            </div>
+        </div>
+
+        <!-- Beviteli elemek -->
+        <button>Gomb 1</button>
+        <button>Gomb 2</button>
+        <button>Gomb 3</button>
+
+        <input type="number" min="10" max="15">
+        <input value="valami">
+        <input type="password" placeholder="Jelszó helye">
+
+        <select>
+            <option value="1">Egy</option>
+            <option value="2">Kettő</option>
+            <option value="3">Három</option>
+            <option value="4">Négy</option>
+        </select>
+
+        <form method="get" action="./form_test.php">
+            <input name="input" value="王明：这是什么？">
+            <select name="select">
+                <option value="1">Egy</option>
+                <option value="2">Kettő</option>
+                <option value="3">Három</option>
+                <option value="4">Négy</option>
+            </select>
+            <input type="submit" value="Elküldöm a formot">
+        </form>
+
+
+        <ul>
+            <li>1.</li>
+            <li>2.</li>
+            <li>3.</li>
+            <li>4.</li>
+            <li>5.</li>
+        </ul>
+
+        <something>Ez mi?</something>
+        <kiscica>Ez a cica helye</kiscica>
+        <div>
+            <eventResult>Ide jön a varázslat</eventResult>
+        </div>
+
+    <script>
+        const eventResult = document.querySelector("eventResult")
+        const piros = document.querySelectorAll(".piros")
+        piros.forEach(elem=>{
+            elem.addEventListener("change",()=>{
+                eventResult.textContent = `Magic mappens here: ${elem.textContent}`
+            })
+        })
+
+
+        const selectList = document.querySelectorAll("select")
+        selectList.forEach(elem=>{
+            elem.addEventListener("change",()=>{
+                eventResult.textContent = `Magic mappens here: ${elem.value}`
+            })
+        })
+
+
+    </script>
+    </body>
+</html>

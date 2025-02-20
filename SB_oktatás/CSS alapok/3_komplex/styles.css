@@ -1,0 +1,119 @@
+body{
+    background-color:#f5f2eb;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width:100%;
+    position: relative;
+}
+.box{
+    box-sizing: border-box;
+    padding:5px;
+    display:inline;
+}
+.box .box-content{
+    background-color:#fcf4e3;
+    padding:1em;
+    margin:0.5em;
+    border:1px solid silver;
+    border-radius:3px;
+    min-height:300px;
+}
+
+.box-small{
+    background-color:red;
+    min-height:100px !important;
+}
+.box .box-header{
+    font-size:24px;
+}
+
+
+.w-100{
+    flex: 0 0 100%; 
+}
+
+.w-75{
+    flex: 0 0 75%;
+}
+.w-sm-50{
+    flex: 0 0 50%;
+}
+.w-25{
+    flex: 0 0 25%;
+}
+.w-10{
+    flex: 0 0 10%;
+}
+
+.w-sm-75{
+    flex: 0 0 75%;
+}
+.w-sm-50{
+    flex: 0 0 50%;
+}
+.w-sm-25{
+    flex: 0 0 25%;
+}
+.w-sm-10{
+    flex: 0 0 10%;
+}
+
+/* Nagy képernyő*/
+@media (min-width: 768px) {
+
+}
+
+/* Kis képernyő*/
+@media (max-width: 767px) {
+    .w-sm-75, .w-sm-50, .w-sm-25, .w-sm-10{
+        flex: 0 0 100%;
+    }
+}
+
+
+.p-0{
+    padding:0;
+}
+.p-1{
+    padding:0.25em;
+}  
+.p-2{
+    padding:0.5em;
+}
+.p-3{
+    padding:1em;
+}
+.p-4{
+    padding:1.25em;
+}
+.p-5{
+    padding:1.5em;
+}
+.text-center{
+    text-align:center;
+}
+
+.btn-link{
+    position: absolute;
+    bottom: 10px; 
+    right: 10px;
+    text-decoration:none;
+    color:#b37304;
+    font-weight:bold;
+}
+.btn-link:hover{
+    color:red;
+    font-size:20px;
+}
+.container .img{
+    transition: transform 0.6s ease;
+    width:90%;
+}
+.container .img:hover {
+    transform: scale(1.05); /* A kép 1.2-szeresére nagyobbodik */
+}
+.justify-content-center{
+    justify-content: center;
+}

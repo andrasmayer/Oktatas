@@ -1,0 +1,1 @@
+Indítom WebSocket szervert IP-vel: 172.18.0.4

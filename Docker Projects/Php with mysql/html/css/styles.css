@@ -1,0 +1,40 @@
+.whisper{
+    padding:5px;
+    min-height:350px;
+    max-height:350px;
+    background-color:rgb(247, 183, 69, .8);
+}
+
+.whisper .whisper-body{
+    min-height:200px;
+    max-height:200px;
+    overflow:auto;
+}
+.whisper .whisper-userName{
+    font-weight:bold;
+    font-size:1.5rem;
+}
+.whisper .whisper-message{
+    background-color:white;
+    border-radius:7px;
+    padding:0.5em;
+    white-space: pre-wrap;
+    margin-bottom: 1rem;
+}
+
+.whisper .whisper-footer{
+    position:absolute;
+    bottom:0;
+}
+
+.whisper .whisper-response{
+    margin: 1rem;
+    resize:none;
+}
+.whisper .bg-me{
+    background-color:#d9cba3;
+}
+.newMessagesBuble{
+    color:red;
+    font-weight:bold;
+}

@@ -1,0 +1,12 @@
+                                                                                                                                                               
+$dbuser="db_user";                                                                                                                                                                 
+$pass="1Btm2";                                                                                                                                                                  
+
+
+Szia!
+
+Frissítettem az account adataid.
+Most próbálj belépni.
+
+user: bence.pocsik
+passWord: Salisbury1

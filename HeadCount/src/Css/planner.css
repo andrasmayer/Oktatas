@@ -1,0 +1,144 @@
+.day{
+    display: inline-block;
+    margin:10px;
+    padding:0;
+    width:125px;
+
+}
+.dayCtn{
+    font-size:12px ;
+    display: inline-block;
+    width:100%;
+    height:80px;
+ 
+}    
+.day .switch{
+    
+    display: inline-block;
+    width:50px;
+    box-shadow: none;
+    font-size:12px ;
+    
+}
+
+
+
+td .controller {
+    border:1px solid #ccc;
+    border-radius: 3px;
+}
+
+.textarea_open{
+    resize: none;
+    overflow:auto;
+    height: 300px;
+}
+
+
+
+
+
+
+
+.btn-holiday{
+    background-color:#4fcfd1;
+}
+.btn-mandatoryLeave{
+    background-color:#58ed7d;
+}
+.btn-availableLastYearHolyDays{
+    background-color:#e3cf3b;
+  
+}
+
+.bg-holiday{
+    background-color:#4fcfd1 !important;
+}
+.bg-mandatoryLeave{
+    background-color:#58ed7d !important;
+}
+.bg-restDay{
+    background-color:#b503fc !important;
+    color:white;
+}
+
+
+
+.PDF{
+    min-height: 297mm;
+    width: 210mm;
+    font-size:13px;
+}
+.PDF .dataRow{
+    padding:4px;
+    
+}
+.logo{
+    width:200px;
+}
+table input{
+    min-width:175px;
+    border: 0 !important;
+    background-color:transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.labourTime1, .labourTime2{
+    width:100px;
+    display:inline;
+}
+/*Dolgozól lista*/
+.closeableCell{
+    overflow:hidden;
+    max-width:35px !important;
+}
+.openCell{
+    overflow:none;
+    max-width:100% !important;
+}
+.hidden{
+    display:none !important;
+}
+
+.accordion{
+    background-color:white;
+    z-index:1000;
+    
+}
+
+
+@media screen and (max-width: 600px){
+    .sm-none {
+      display:none !important;
+    }
+
+    .yearCalendar .smallDay{
+        max-height:55px;
+    }
+}
+
+.yearCalendarCtn{
+    max-height:100%;
+    overflow:auto;
+}
+
+@media (max-width: 399px) {
+    .d-none-spec{
+        display:none;
+    }
+    .day{
+        margin-left:35px !important;
+        min-width:96% !important;
+ 
+    }
+}
+
+
+table .name{
+    min-width:175px;
+}

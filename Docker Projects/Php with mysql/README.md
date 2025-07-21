@@ -1,0 +1,1 @@
+Ebből a mappából indítod "docker compose up" paranccsal

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0"
+         xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         packagerversion="1.8.0"
+         version="2.0"
+         xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+  <name>smbclient</name>
+  <channel>pecl.php.net</channel>
+  <summary>A PHP wrapper for libsmbclient</summary>
+  <description>smbclient is a PHP extension that uses Samba's libsmbclient library to provide
+  Samba related functions and 'smb' streams to PHP programs.</description>
+  <lead>
+    <name>Eduardo Bacchi Kienetz</name>
+    <user>eduardo</user>
+    <email>eduardo@kienetz.com</email>
+    <active>yes</active>
+  </lead>
+  <contributor>
+    <name>Remi Collet</name>
+    <user>remi</user>
+    <email>remi@php.net</email>
+    <active>yes</active>
+  </contributor>
+  <date>2024-11-26</date>
+  <time>12:45:00</time>
+  <version>
+    <release>1.1.2</release>
+    <api>0.8.0</api>
+  </version>
+  <stability>
+    <release>stable</release>
+    <api>stable</api>
+  </stability>
+  <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+  <notes>
+	  Build fixes.
+  </notes>
+  <contents>
+    <dir name="/">
+      <!-- sources -->
+      <file name="config.m4" role="src"/>
+      <file name="php_smbclient.h" role="src"/>
+      <file name="smbclient.c" role="src"/>
+      <file name="smbclient.stub.php" role="src"/>
+      <file name="smbclient_arginfo.h" role="src"/>
+      <file name="smbclient_legacy_arginfo.h" role="src"/>
+      <file name="smb_streams.c" role="src"/>
+      <!-- documentation -->
+      <file name="LICENSE" role="doc"/>
+      <file name="README.md" role="doc"/>
+      <!--- test suite -->
+      <file name="phpunit.xml.dist" role="test"/>
+      <dir name ="tests">
+        <file name="ClosedirTest.php" role="test"/>
+        <file name="CreateTest.php" role="test"/>
+        <file name="GetxattrTest.php" role="test"/>
+        <file name="LseekTest.php" role="test"/>
+        <file name="OpendirTest.php" role="test"/>
+        <file name="OptionsTest.php" role="test"/>
+        <file name="ReaddirTest.php" role="test"/>
+        <file name="ReadTest.php" role="test"/>
+        <file name="RenameTest.php" role="test"/>
+        <file name="setup-share.sh" role="test"/>
+        <file name="StateFreeTest.php" role="test"/>
+        <file name="StateInitTest.php" role="test"/>
+        <file name="StateNewTest.php" role="test"/>
+        <file name="StreamsTest.php" role="test"/>
+        <file name="VersionTest.php" role="test"/>
+        <file name="VfsTest.php" role="test"/>
+        <file name="WriteTest.php" role="test"/>
+      </dir><!-- tests -->
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.3.7</min>
+      </php>
+      <pearinstaller>
+        <min>1.9.5</min>
+      </pearinstaller>
+    </required>
+  </dependencies>
+  <providesextension>smbclient</providesextension>
+  <extsrcrelease/>
+  <changelog>
+      <release>
+      <date>2024-11-25</date>
+      <version>
+        <release>1.1.2</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+	      - Build fixes.
+      </notes>
+     </release>
+     <release>
+      <date>2023-04-17</date>
+      <version>
+        <release>1.1.1</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+	      - Workaround for libsmbclient regression.
+      </notes>
+     </release>
+     <release>
+      <date>2023-04-01</date>
+      <version>
+        <release>1.1.0</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+	      - PHP 8 readiness, by Remi.
+      </notes>
+     </release>
+     <release>
+      <date>2023-04-01</date>
+      <version>
+        <release>1.0.7</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+	      - xattr issue fixed by Remi.
+      </notes>
+     </release>
+     <release>
+      <date>2021-02-28</date>
+      <version>
+        <release>1.0.6</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+	      - Remi implemented ftruncate on smb_streams.
+      </notes>
+     </release>
+     <release>
+      <date>2021-02-11</date>
+      <version>
+        <release>1.0.5</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+	      - Remi fixed a possible segfault.
+	      - Minor documentation update.
+      </notes>
+     </release>
+     <release>
+      <date>2021-01-21</date>
+      <version>
+        <release>1.0.4</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+      - Check if smbc_setOptionProtocols() is available (it was introduced Sep 4, 2018).
+      </notes>
+     </release>
+     <release>
+      <date>2021-01-21</date>
+      <version>
+        <release>1.0.3</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+      - Add client min/max protocol to streams, and make either min/max optional.
+      </notes>
+     </release>
+     <release>
+      <date>2021-01-20</date>
+      <version>
+        <release>1.0.2</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+          - Introduces smbclient_client_protocols, to enable setting client min/max protocol.
+      </notes>
+     </release>
+     <release>
+      <date>2020-12-29</date>
+      <version>
+        <release>1.0.1</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+          - Remi fixed code for PHP 7.4 and 8, and memory free.
+          - Remi added read test.
+          - Eduardo updated Travis build config.
+          - Peter fixed documentation for smbclient_state_init.
+      </notes>
+    </release>
+    <release>
+      <date>2018-12-24</date>
+      <version>
+        <release>1.0.0</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+          - Remi fixed duplicate symbol issue and added support for PHP 7.3 (due to changed API).
+          - Mario fixed Travis setup.
+      </notes>
+    </release>
+    <release>
+      <date>2017-02-07</date>
+      <version>
+        <release>0.9.0</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+- fix gh#47 Incorrect function definition for smbclient_read
+- optimization: enable stream wrapper reusing connections
+      </notes>
+    </release>
+    <release>
+      <date>2016-02-29</date>
+      <version>
+        <release>0.8.0dev</release>
+        <api>0.8.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+      <notes>
+- Promoting to stable after almost 3 months with no commits needed.
+      </notes>
+    </release>
+    <release>
+     <date>2015-12-08</date>
+     <version>
+      <release>0.8.0RC1</release>
+      <api>0.8.0</api>
+     </version>
+     <stability>
+      <release>beta</release>
+      <api>stable</api>
+     </stability>
+     <license uri="http://opensource.org/licenses/BSD-2-Clause">BSD 2-clause</license>
+     <notes>
+- initial PECL release
+- add &apos;smb&apos; streams support
+- rename extension to smbclient
+- PHP 7 compatibility
+     </notes>
+    </release>
+  </changelog>
+</package>

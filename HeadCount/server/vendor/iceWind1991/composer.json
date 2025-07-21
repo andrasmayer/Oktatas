@@ -1,0 +1,5 @@
+{
+    "require": {
+        "icewind/smb": "^3.7"
+    }
+}

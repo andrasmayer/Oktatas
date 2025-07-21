@@ -1,0 +1,74 @@
+<style>
+html, body {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE10+/Edge */
+}
+
+
+.piros{
+    background-color:red;
+}
+</style>
+
+<button class="t">haha</button>
+<button class="t">haha</button>
+<button class="t">haha</button>
+<button class="t">haha</button>
+<button class="t">haha</button>
+
+
+<script>
+    let selectedItems = []
+   
+    const btn = document.querySelectorAll("button")
+
+    let mouseIsDown = false
+    const body = document.querySelector("body")
+
+    body.addEventListener("mousedown",()=>{
+        btn.forEach((itm)=>{
+            itm.classList.remove("piros")
+        })
+        selectedItems = []
+        mouseIsDown = true
+    })
+
+    body.addEventListener("mouseup",()=>{
+        mouseIsDown = false
+    })
+
+
+
+
+
+    btn.forEach((itm,index)=>{
+        itm.addEventListener("mouseenter", (e)=>{
+            if(mouseIsDown === true && selectedItems.includes(index) === false){
+                itm.classList.add("piros")
+                selectedItems.push(index)
+            }
+        });
+    })
+
+
+/*
+    body.addEventListener("mousemove",(e)=>{
+
+        if( mouseIsDown === true && e.target.classList.contains("t")){
+            //console.log(e.target.classList)
+            console.log(e.target.classList.contains("t"))
+            //console.log(e.target)
+        }
+    })
+
+*/
+  /*
+    document.querySelector("body").addEventListener("touchmove", ()=>{
+            console.log("touch started")
+        });
+
+
+    */
+</script>

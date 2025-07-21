@@ -1,0 +1,20 @@
+.tableSorter{
+}
+.dataTableControls{text-align:center;}
+.dataTableControls button{
+	margin:1vh;
+	border:none;
+	border-radius:3px;
+	background-color:#ccc;
+	padding:10px;
+	width:50px;
+} 
+
+.dataTableControls .active{
+
+background-color:#383a3d;
+ color:white;
+}
+.tableSorter tfoot input{
+	border:1px solid #ccc !important;
+}

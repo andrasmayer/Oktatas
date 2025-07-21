@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  - SPDX-FileCopyrightText: 2012 Robin Appelman <robin@icewind.nl>
+  - SPDX-License-Identifier: MIT
+-->
+<phpunit bootstrap="bootstrap.php">
+	<testsuite name='SMB'>
+		<directory suffix='.php'>./</directory>
+	</testsuite>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">../src</directory>
+		</whitelist>
+	</filter>
+</phpunit>

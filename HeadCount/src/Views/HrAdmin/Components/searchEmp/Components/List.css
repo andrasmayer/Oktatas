@@ -1,0 +1,6 @@
+.stict-to-nav{
+    position: sticky; 
+    top: 56px; /* A navbar alatt jelenik meg */
+    padding: 10px;
+    z-index: 1020; /* Biztosítja, hogy a navbar alatt maradjon */
+}

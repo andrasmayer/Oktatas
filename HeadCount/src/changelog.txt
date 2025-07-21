@@ -1,0 +1,17 @@
+2024.01.09
+
+új nézet:
+	CRM_subprojects
+
+új eljárások:
+    crm_subproject_details
+    crm_subproject_details_update
+    crm_create_subproject
+
+új táblák:
+	crm_projects_subprojects
+
+
+2024.01.10
+Új eljárások:
+    crm_list_details
